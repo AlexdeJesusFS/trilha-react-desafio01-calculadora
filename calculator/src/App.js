@@ -25,8 +25,8 @@ const App = () => {
       setCurrentNumber('0');
       setOperation('+');
       } else {
-        const sum = Number(firstNumber) + Number(currentNumber);
-        setCurrentNumber(String(sum));
+        const result = Number(firstNumber) + Number(currentNumber);
+        setCurrentNumber(String(result));
       };
   };
 
@@ -36,8 +36,52 @@ const App = () => {
       setCurrentNumber('0');
       setOperation('-');
       } else {
-        const sum = Number(firstNumber) - Number(currentNumber);
-        setCurrentNumber(String(sum));
+        const result = Number(firstNumber) - Number(currentNumber);
+        setCurrentNumber(String(result));
+      };
+  };
+
+  const handleMultiNumbers = () => {
+    if (firstNumber === '0') {
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('0');
+      setOperation('x');
+      } else {
+        const result = Number(firstNumber) * Number(currentNumber);
+        setCurrentNumber(String(result));
+      };
+  };
+
+  const handleDivisionNumbers = () => {
+    if (firstNumber === '0') {
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('0');
+      setOperation('/');
+      } else {
+        const result = Number(firstNumber) / Number(currentNumber);
+        setCurrentNumber(String(result));
+      };
+  };
+
+  const handlePowerNumbers = () => {
+    if (firstNumber === '0') {
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('0');
+      setOperation('^');
+      } else {
+        const result = Math.pow(Number(firstNumber), Number(currentNumber));
+        setCurrentNumber(String(result));
+      };
+  };
+
+  const handleSqrtNumbers = () => {
+    if (firstNumber === '0') {
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('√');
+      setOperation('√');
+      } else {
+        const result = Math.sqrt(Number(firstNumber));
+        setCurrentNumber(String(result));
       };
   };
 
@@ -52,13 +96,29 @@ const App = () => {
           handleSubNumbers();
           break;
 
+        case 'x':
+          handleMultiNumbers();
+          break;
+
+        case '/':
+          handleDivisionNumbers();
+          break;
+
+        case '^':
+          handlePowerNumbers();
+          break;
+
+        case '√':
+          handleSqrtNumbers();
+          break;
+
         default:
           break;
       };
       
       } else {
-        const sum = Number(firstNumber) + Number(currentNumber);
-        setCurrentNumber(String(sum));
+        const result = Number(firstNumber) + Number(currentNumber);
+        setCurrentNumber(String(result));
       };
   };
 
@@ -67,8 +127,8 @@ const App = () => {
       <Content>
         <Input value={currentNumber}/>
         <Row>
-          <Button label="x" onClick={() => handleAddNumber('x')}/>
-          <Button label="/" onClick={() => handleAddNumber('/')}/>
+          <Button label="x" onClick={handleMultiNumbers}/>
+          <Button label="/" onClick={handleDivisionNumbers}/>
           <Button label="C" onClick={() => handleOnClear()}/>
           <Button label="<" onClick={() => handleAddNumber('<')} />
         </Row>
@@ -88,6 +148,12 @@ const App = () => {
           <Button label="1" onClick={() => handleAddNumber('1')}/>
           <Button label="2" onClick={() => handleAddNumber('2')}/>
           <Button label="3" onClick={() => handleAddNumber('3')}/>
+          <Button label="^" onClick={handlePowerNumbers}/>
+        </Row>
+        <Row>
+          <Button label="√" onClick={handleSqrtNumbers}/>
+          <Button label="0" onClick={() => handleAddNumber('0')}/>
+          <Button label="." onClick={() => handleAddNumber('.')}/>
           <Button label="=" onClick={handleEquals}/>
         </Row>
       </Content>
