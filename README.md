@@ -18,5 +18,5 @@ Operações para:
 - subtração
 - divisão
 - multiplicação
-- radiciação
+- potenciação
 - raiz quadrada
