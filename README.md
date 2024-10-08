@@ -8,3 +8,15 @@ Neste Desafio de Projeto vamos criar juntos uma calculadora utilizando React. Vo
     <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
     <img src="https://img.shields.io/badge/-React-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React">
 </div>
+
+### Detalhes & Imagem
+
+![image](https://github.com/user-attachments/assets/4a9249a2-add2-4039-bd2f-c8bcbdfe1c19)
+
+Operações para:
+- soma
+- subtração
+- divisão
+- multiplicação
+- radiciação
+- raiz quadrada
