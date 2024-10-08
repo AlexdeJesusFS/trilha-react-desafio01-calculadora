@@ -75,18 +75,23 @@ const App = () => {
   };
 
   const handleSqrtNumbers = () => {
-    if (firstNumber === '0') {
-      setFirstNumber(String(currentNumber));
-      setCurrentNumber('√');
-      setOperation('√');
-      } else {
-        const result = Math.sqrt(Number(firstNumber));
-        setCurrentNumber(String(result));
-      };
+    setCurrentNumber('');
+    setCurrentNumber(prev => `√${prev}`);
+    setOperation('√');
+  };
+
+  const handleBackspace = () => {
+    setCurrentNumber(prev => `${prev.length > 1 ? prev.slice(0, -1) : 0}`);
   };
 
   const handleEquals = () => {
-    if (firstNumber !== '0' && operation !== '' && currentNumber !== '0') {
+    if (operation === '√') {
+      const number = currentNumber.slice(1);
+      const result = Math.sqrt(Number(number));
+      setCurrentNumber(String(result));
+      setOperation('');
+
+    } else if (firstNumber !== '0' && operation !== '' && currentNumber !== '0') {
       switch(operation) {
         case '+':
           handleSumNumbers();
@@ -130,7 +135,7 @@ const App = () => {
           <Button label="x" onClick={handleMultiNumbers}/>
           <Button label="/" onClick={handleDivisionNumbers}/>
           <Button label="C" onClick={() => handleOnClear()}/>
-          <Button label="<" onClick={() => handleAddNumber('<')} />
+          <Button label="<" onClick={handleBackspace} />
         </Row>
         <Row>
           <Button label="7" onClick={() => handleAddNumber('7')}/>
